@@ -33,9 +33,9 @@ end
 function scene:create( event )
 	local sceneGroup = self.view
     --Text
-    local myTextObject = display.newText( "TARGO TAP", display.contentWidth/2, display.contentHeight/6, "calibri", 120 )
+    local myTextObject = display.newText( "TARGO TAP", display.contentWidth/2, display.contentHeight/6, "Nunito-Black", 100 )
     myTextObject:setFillColor(0, 166/255, 156/255)--rgb(0, 166, 156)
-    local moarTextObject = display.newText( "OPTIONS", display.contentWidth/2, display.contentHeight/4, "calibri", 60 )
+    local moarTextObject = display.newText( "OPTIONS", display.contentWidth/2, display.contentHeight/4, "Nunito-Black", 50 )
     moarTextObject:setFillColor(0, 166/255, 156/255)
     backBtn = widget.newButton {
         label = "Back",
@@ -47,7 +47,8 @@ function scene:create( event )
         cornerRadius = 0,--rgb(148, 210, 206) --rgb(0, 165, 155)
         labelColor = { default = { .031, .651, .094, 1 }, over = { .000, .551, .000, 1} },
         fillColor = { default={ .616, .82, .58, 1 }, over={ .031, .651, .094, 0.4 } },
-        fontSize = 70
+        fontSize = 70,
+        font = "Nunito-Regular"
     }
     musicBtn = widget.newButton {
         label = "Enable Music",
@@ -59,7 +60,8 @@ function scene:create( event )
         cornerRadius = 0,--rgb(148, 210, 206) --rgb(0, 165, 155)
         labelColor = { default = { 255,0,255, 1 }, over = { 128/255,0,128/255, 1} },
         fillColor = { default={ 128/255,0,128/255, 1 }, over={ 255,0,255, 0.4 } },
-        fontSize = 70
+        fontSize = 70,
+        font = "Nunito-Regular"
     }
     -- Center the button
     backBtn.x = display.contentCenterX

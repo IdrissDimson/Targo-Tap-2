@@ -22,29 +22,50 @@ local function onBackBtnRelease()
     return true
 end
 
+local function onPlayAgainBtnRelease()
+	-- body
+	composer.gotoScene( "game", "fade", 100 )
+end
 function scene:create( event )
 	local sceneGroup = self.view
-    local gameoverText = display.newText("GAME OVER", display.contentCenterX, display.contentHeight/3, native.systemFontBold, 65)
+    local gameoverText = display.newText("GAME OVER", display.contentCenterX, display.contentHeight/3, "Nunito-Black", 65)
     
-    local scoreText = display.newText("YOUR SCORE:", display.contentCenterX, display.contentHeight/2.5, native.systemFontBold, 60)
+    local scoreText = display.newText("YOUR SCORE:", display.contentCenterX, display.contentHeight/2.5, "Nunito-Black", 60)
     backBtn = widget.newButton {
         label = "Back",
         onRelease = onBackBtnRelease,
         --properties for a rectangle button...
         shape = "Rect",
         width = display.contentWidth,
-        height = display.contentHeight/4,
+        height = display.contentHeight/5,
         cornerRadius = 0,--rgb(148, 210, 206) --rgb(0, 165, 155)
         labelColor = { default = { .031, .651, .094, 1 }, over = { .000, .551, .000, 1} },
         fillColor = { default={ .616, .82, .58, 1 }, over={ .031, .651, .094, 0.4 } },
-        fontSize = 70
+        fontSize = 70,
+        font = "Nunito-Regular"
     }
-    
+    playAgainBtn = widget.newButton {
+    	label = "Play Again",
+    	onRelease = onPlayAgainBtnRelease,
+    	--properties for a rectangle button...
+        shape = "Rect",
+        width = display.contentWidth,
+        height = display.contentHeight/5,
+        cornerRadius = 0,--rgb(148, 210, 206) --rgb(0, 165, 155)
+        labelColor = { default = { 0, .647, .608, 1 }, over = { 0, .547, .508, 1 } },
+        fillColor = { default={ .580, .824, .808, 1 }, over={ .480, .724, .708, 1 } },
+        fontSize = 70,
+        font = "Nunito-Regular"
+	}
     -- Center the button
     backBtn.x = display.contentCenterX
     backBtn.y = display.contentCenterY + (display.contentHeight/2.5);
+
+    playAgainBtn.x = display.contentCenterX
+    playAgainBtn.y = display.contentCenterY + (display.contentHeight/5)
     
     sceneGroup:insert( backBtn )
+    sceneGroup:insert( playAgainBtn )
     sceneGroup:insert( gameoverText )
     sceneGroup:insert( scoreText ) 
 end

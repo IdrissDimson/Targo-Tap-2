@@ -22,30 +22,36 @@ local playBtn
 local optionsBtn
 local moreBtn
 
--- 'onRelease' event listener for playBtn
-local function onPlayBtnRelease()
-	-- go to game.lua scene
-	composer.gotoScene( "game", "fade", 250 )
-	return true	-- indicates successful touch
-end
-
-local function onOptionsBtnRelease() 
-	composer.gotoScene( "options", "fade", 150 )
-	return true
-end;
-
-local function onMoreBtnRelease()
-	composer.gotoScene( "more", "fade", 150 )
-	return true
-end
-
 function scene:create( event )
 	local sceneGroup = self.view
     --Text
-    local myTextObject = display.newText( "TARGO TAP", display.contentWidth/2, display.contentHeight/6, "calibri", 120 )
+    local myTextObject = display.newText( "TARGO TAP", display.contentWidth/2, display.contentHeight/6, "Nunito-Black", 100 )
     myTextObject:setFillColor(0, 166/255, 156/255)--rgb(0, 166, 156)
-    local differentText = display.newText( "Fresh!", display.contentWidth/2, display.contentHeight/4.5, "calibri", 60 )
+    local differentText = display.newText( "Fresh!", display.contentWidth/2, display.contentHeight/4.5, "Nunito-Black", 50 )
     differentText:setFillColor(0, 146/255, 136/255)
+
+    -- 'onRelease' event listener for playBtn
+    local function onPlayBtnRelease()
+        local phase = event.phase
+        -- go to game.lua scene
+        composer.gotoScene( "game", "fade", 250 )
+
+        return true -- indicates successful touch
+    end
+
+    local function onOptionsBtnRelease() 
+        local phase = event.phase
+        local options = { params = event.params }
+        composer.gotoScene( "options", "fade", 150 )
+        return true
+    end
+
+    local function onMoreBtnRelease()
+        local phase = event.phase
+        local options = { params = event.params }
+        composer.gotoScene( "more", "fade", 150 )
+        return true
+    end
 
     -- Create the widget
     playBtn = widget.newButton {
@@ -58,7 +64,8 @@ function scene:create( event )
         cornerRadius = 0,
         labelColor = { default = { .031, .651, .094, 1 }, over = { .000, .551, .000, 1} },
         fillColor = { default={ .616, .82, .58, 1 }, over={ .031, .651, .094, 0.4 } },
-        fontSize = 70
+        fontSize = 70,
+        font = "Nunito-Regular"
     }
 
     optionsBtn = widget.newButton {
@@ -71,7 +78,8 @@ function scene:create( event )
         cornerRadius = 0,--rgb(148, 210, 206) --rgb(0, 165, 155)
         labelColor = { default = { 0, .647, .608, 1 }, over = { 0, .547, .508, 1 } },
         fillColor = { default={ .580, .824, .808, 1 }, over={ .480, .724, .708, 1 } },
-        fontSize = 70
+        fontSize = 70,
+        font = "Nunito-Regular"
     }
 
     moreBtn = widget.newButton {
@@ -84,7 +92,8 @@ function scene:create( event )
         cornerRadius = 0,--rgb(255, 178, 123) rgb(239, 113, 25)
         labelColor = { default = { 239/255, 113/255, 25/255, 1 }, over = { 219/255, 93/255, 5/255, 1} },
         fillColor = { default={ 255/255, 158/255, 123/255, 1 }, over={ 235/255, 138/255, 103/255, 1 } },
-        fontSize = 70
+        fontSize = 70,
+        font = "Nunito-Regular"
     }
 
     -- Center the button

@@ -33,15 +33,15 @@ function scene:create( event )
 
 	local sceneGroup = self.view
     
-    local timeText = display.newText( "TIME:", display.contentWidth/2.3, display.contentHeight/6, native.systemFont, 60 )
+    local timeText = display.newText( "TIME:", display.contentWidth/2.3, display.contentHeight/6, "Nunito-Black", 60 )
     timeText:setFillColor(.27, .651, 60)
-    local scoreText = display.newText( "SCORE:", display.contentWidth/2.3, display.contentHeight/4.5, native.systemFont, 40 )
+    local scoreText = display.newText( "SCORE:", display.contentWidth/2.3, display.contentHeight/4.5, "Nunito-Regular", 40 )
     scoreText:setFillColor(.27, .651, 60)
-    local numberText = display.newText( 0, display.contentCenterX, display.contentCenterY+45, native.systemFont, 100 )
+    local numberText = display.newText( 0, display.contentCenterX, display.contentCenterY+45, "Nunito-Regular", 100 )
     numberText:setFillColor(0, 0, 0)
     numberText.text = ( math.random(1, 4) )
 
-    local scoreNumber = display.newText( 0, display.contentWidth/1.7, display.contentHeight/4.5, native.systemFont, 60 )
+    local scoreNumber = display.newText( 0, display.contentWidth/1.7, display.contentHeight/4.5, "Nunito-Regular", 60 )
     scoreNumber:setFillColor(.27, .651, 60)
 
     local function check()
