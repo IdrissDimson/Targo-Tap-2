@@ -16,9 +16,6 @@ local widget = require("widget")
 local composer = require( "composer" )
 local scene = composer.newScene()
 
--- Read/write files
-local GBCDataCab = require("plugin.GBCDataCabinet")
-
 local Btn1
 local Btn2
 local Btn3
@@ -27,6 +24,7 @@ local timeLeft
 local time = 0
 local timeLimit = 20
 local score = 0
+
 function scene:create( event )
 
 	-- Called when the scene's view does not exist.
@@ -136,7 +134,8 @@ function scene:create( event )
         labelColor = { default = { 8/255, 19/255, 166/255, 1 }, over = { 149/255, 148/255, 209/255, 1} },
         fillColor = { default={ 149/255, 148/255, 209/255, 1 }, over={  8/255, 19/255, 166/255, 0.4 } },
         fontSize = 70,
-        font = "Nunito-Regular"}
+        font = "Nunito-Regular"
+    }
     Btn2 = widget.newButton {
         label = "2",
         onPress = check2,
@@ -149,7 +148,8 @@ function scene:create( event )
         labelColor = { default = { 166/255, 8/255, 8/255, 1 }, over = { 207/255, 147/255, 147/255, 1} },
         fillColor = { default={ 207/255, 147/255, 147/255, 1 }, over={ 166/255, 8/255, 8/255, 0.4 } },
         fontSize = 70,
-        font = "Nunito-Regular"}
+        font = "Nunito-Regular"
+    }
     Btn3 = widget.newButton {
         label = "3",
         onPress = check3,
@@ -162,7 +162,8 @@ function scene:create( event )
         labelColor = { default = { 166/255, 8/255, 8/255, 1 }, over = { 207/255, 147/255, 147/255, 1} },
         fillColor = { default={ 207/255, 147/255, 147/255, 1 }, over={ 166/255, 8/255, 8/255, 0.4 } },
         fontSize = 70,
-        font = "Nunito-Regular"}
+        font = "Nunito-Regular"
+    }
     Btn4 = widget.newButton {
         label = "4",
         onPress = check4,
@@ -175,7 +176,8 @@ function scene:create( event )
         labelColor = { default = { 8/255, 19/255, 166/255, 1 }, over = { 149/255, 148/255, 209/255, 1} },
         fillColor = { default={ 149/255, 148/255, 209/255, 1 }, over={  8/255, 19/255, 166/255, 0.4 } },
         fontSize = 70,
-        font = "Nunito-Regular"}
+        font = "Nunito-Regular"
+    }
     local numberRect = display.newRoundedRect( display.safeActualContentWidth/2, display.safeScreenOriginY + (display.safeActualContentHeight/2), display.safeActualContentWidth/4, display.safeActualContentHeight/7, 25 )
     
     Btn1.x = display.safeScreenOriginX + (display.safeActualContentWidth/4);
@@ -189,25 +191,7 @@ function scene:create( event )
     
     Btn4.x = display.safeScreenOriginX + (display.safeActualContentWidth/1.32);
     Btn4.y = display.safeScreenOriginY + (display.safeActualContentHeight/1.7);
-
-    -- does a cabinet "Gamescores" exists?
-    local CabExist = GBCDataCab.load("Gamescores")
-
-    -- if cabinet does not exist, then create it.
-    if CabExist == false then
-        CabExist = GBCDataCab.createCabinet("Gamescores")
-    end
-
-    -- if the cabinet does exist, or if it was just created, try to extract some data    
-    if CabExist then
-        values = GBCDataCab.get("Gamescores", "Player Scores")
-
-        -- if values is not nil, then you have data.  Use it.
-    else
-        -- if values is nil, then you do not have any data.  
-        -- Probably because this is the first time running the app.
-        -- initialize your variables here
-    end
+    
     
     sceneGroup:insert( timeText )
     sceneGroup:insert( scoreText )
