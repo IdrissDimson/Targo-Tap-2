@@ -5,6 +5,15 @@
 
 settings =
 {
+		--
+	-- Plugins
+	-- 
+
+	plugins = {  
+	    ["plugin.GBCDataCabinet"] = {
+	        publisherId = "com.gamesbycandlelight",
+	    },
+	}, 
 	
 	orientation =
 	{
@@ -31,7 +40,7 @@ settings =
 		{
 			UIStatusBarHidden = false,
 			UIPrerenderedIcon = true, -- set to false for "shine" overlay
-			--UIApplicationExitsOnSuspend = true, -- uncomment to quit app on suspend
+			UILaunchStoryboardName = "LaunchScreen",
 
 			CFBundleIconFiles =
 			{
@@ -60,7 +69,7 @@ settings =
 				{
 					CFBundleURLSchemes =
 					{
-						"fbXXXXXXXXX",  -- replace XXXXXXXXX with your Facebook appId
+						"fb394797327648984",  -- replace XXXXXXXXX with your Facebook appId
 					}
 				}
 			}
@@ -77,5 +86,5 @@ settings =
 		{
 			"android.permission.INTERNET",
 		},
-	},
+	}
 }
